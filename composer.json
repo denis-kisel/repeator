@@ -1,7 +1,6 @@
 {
-    "name": "deniskisel/repeator",
-    "description": ":description",
-    "license": "license",
+    "name": "denis-kisel/repeator",
+    "description": "Repeator for laravel admin widgets",
     "authors": [
         {
             "name": "Denis Kisel",
@@ -9,7 +8,7 @@
             "homepage": "http://digital-elephant.com.ua"
         }
     ],
-    "homepage": "https://github.com/deniskisel/repeator",
+    "homepage": "https://github.com/denis-kisel/repeator",
     "keywords": ["Laravel", "Repeator"],
     "require": {
         "illuminate/support": "~5"
@@ -23,11 +22,6 @@
     "autoload": {
         "psr-4": {
             "DenisKisel\\Repeator\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "DenisKisel\\Repeator\\Tests\\": "tests"
         }
     },
     "extra": {
