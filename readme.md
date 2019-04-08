@@ -21,7 +21,7 @@ DenisKisel\Repeator\RepeatorServiceProvider::class,
 
 Put code in the app/admin/bootstrap.php file
 ``` php
-Encore\Admin\Form::extend('repeator', DenisKisel\Repeator\Repeator::class);
+Encore\Admin\Form::extend('repeat', DenisKisel\Repeator\Repeator::class);
 ```
 ## Usage
 
