@@ -1,6 +1,6 @@
 # Repeator
 
-Package for laravel-admin-widgets. This package is help to make dynamic fields for laravel admin widgets.
+Package for laravel-admin-widgets. This package is help to make dynamic fields for [laravel-admin-widgets](https://github.com/denis-kisel/laravel-admin-widget).
 
 ## Installation
 
