@@ -34,7 +34,7 @@ class Repeator extends Field
     public function render()
     {
         // specify a view to render.
-        $this->view = 'dkrepeator::repeat';
+        $this->view = 'dkrepeator::repeator';
 
         $this->buildNestedForm($this->column, $this->builder);
 
