@@ -29,9 +29,6 @@ class RepeatorServiceProvider extends ServiceProvider
     public function register()
     {
         // Register the service the package provides.
-        $this->app->singleton('repeator', function ($app) {
-            return new Repeator;
-        });
     }
 
     /**
@@ -41,7 +38,7 @@ class RepeatorServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['repeator'];
+//        return ['repeator'];
     }
     
     /**
