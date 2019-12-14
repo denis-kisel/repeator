@@ -91,10 +91,21 @@ class Repeator extends Field
          * {count} is increment number of current sub form count.
          */
         $script = <<<EOT
-        
-var {$this->column}_index = 0;
+
+function NFsetKeys() {
+    if ($('.has-many-items-form').length > 0) {
+        $('.has-many-items-form').each(function (i, v) {
+            $(v).find('*[name]').each(function (inputI, inputValue) {
+                $(inputValue).attr('name', $(inputValue).attr('name').replace(/new___LA_KEY__/g, i));
+                $(inputValue).attr('name', $(inputValue).attr('name').replace(/NaN/g, i));
+            })
+        });
+    }
+}
+
+var {$this->column}_index = $('.has-many-items-form').length;
 var attrName = $('.has-many-{$this->column}-form:last-of-type input').attr('name');
-if ($('.has-many-{$this->column}-form:last-of-type input').length != 0) {      
+if ($('.has-many-{$this->column}-form:last-of-type input').length != 0) {
     var match = attrName.match(/new_(\d)*/);
     {$this->column}_index = Number(match[1]);
 }
@@ -107,6 +118,7 @@ $('#has-many-{$this->column}').on('click', '.add', function () {
 
     var template = tpl.html().replace(/{$defaultKey}/g, {$this->column}_index);
     $('.has-many-{$this->column}-forms').append(template);
+    NFsetKeys();
     {$templateScript}
 });
 
@@ -114,6 +126,8 @@ $('#has-many-{$this->column}').on('click', '.remove', function () {
     $(this).closest('.has-many-{$this->column}-form').remove();
     $(this).closest('.has-many-{$this->column}-form').find('.$removeClass').val(1);
 });
+
+NFsetKeys();
 
 EOT;
 
