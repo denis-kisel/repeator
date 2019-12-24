@@ -92,10 +92,10 @@ class Repeator extends Field
          */
         $script = <<<EOT
 
-function NFsetKeys() {
+function NFsetKeys{$this->column}() {
     if ($('.has-many-{$this->column}-form').length > 0) {
         $('.has-many-{$this->column}-form').each(function (i, v) {
-            $(v).find('*[name]').each(function (inputI, inputValue) {
+            $(v).find('*[name^="{$this->column}"]').each(function (inputI, inputValue) {
                 $(inputValue).attr('name', $(inputValue).attr('name').replace(/new___LA_KEY__/g, i));
                 $(inputValue).attr('name', $(inputValue).attr('name').replace(/NaN/g, i));
             })
@@ -117,7 +117,7 @@ $('#has-many-{$this->column}').on('click', '.add', function () {
 
     var template = tpl.html().replace(/{$defaultKey}/g, {$this->column}_index);
     $('.has-many-{$this->column}-forms').append(template);
-    NFsetKeys();
+    NFsetKeys{$this->column}();
     {$templateScript}
 });
 
@@ -126,7 +126,7 @@ $('#has-many-{$this->column}').on('click', '.remove', function () {
     $(this).closest('.has-many-{$this->column}-form').find('.$removeClass').val(1);
 });
 
-NFsetKeys();
+NFsetKeys{$this->column}();
 
 EOT;
 
