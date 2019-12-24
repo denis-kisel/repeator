@@ -93,8 +93,8 @@ class Repeator extends Field
         $script = <<<EOT
 
 function NFsetKeys() {
-    if ($('.has-many-items-form').length > 0) {
-        $('.has-many-items-form').each(function (i, v) {
+    if ($('.has-many-{$this->column}-form').length > 0) {
+        $('.has-many-{$this->column}-form').each(function (i, v) {
             $(v).find('*[name]').each(function (inputI, inputValue) {
                 $(inputValue).attr('name', $(inputValue).attr('name').replace(/new___LA_KEY__/g, i));
                 $(inputValue).attr('name', $(inputValue).attr('name').replace(/NaN/g, i));
@@ -103,11 +103,10 @@ function NFsetKeys() {
     }
 }
 
-var {$this->column}_index = $('.has-many-items-form').length;
+var {$this->column}_index = $('.has-many-{$this->column}-form').length;
 var attrName = $('.has-many-{$this->column}-form:last-of-type input').attr('name');
 if ($('.has-many-{$this->column}-form:last-of-type input').length != 0) {
-    var match = attrName.match(/new_(\d)*/);
-    {$this->column}_index = Number(match[1]);
+    {$this->column}_index = $('.has-many-{$this->column}-form').length;
 }
 
 $('#has-many-{$this->column}').on('click', '.add', function () {
